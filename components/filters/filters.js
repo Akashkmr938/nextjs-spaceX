@@ -24,6 +24,8 @@ const booleanArray = ["true", "false"];
 
 const useStyles = makeStyles((theme) => ({
   filterContainer: {
+    color: "darkslategrey",
+    justifyContent: "center",
     display: "flex",
     flexWrap: "wrap",
     "& > *": {
@@ -46,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     margin: "10px",
     backgroundColor: "rgb(154,205,50,0.6);",
+    fontWeight: "bold",
   },
   line: {
     width: "80%",
@@ -54,6 +57,19 @@ const useStyles = makeStyles((theme) => ({
 
 const Filters = (props) => {
   const classes = useStyles();
+
+  const pressedYearColor = (year) => {
+    return props.pressedButton.year === year ? "green" : "rgb(154,205,50,0.6)";
+  };
+  const pressedLaunchColor = (launch) => {
+    return props.pressedButton.launch === launch
+      ? "green"
+      : "rgb(154,205,50,0.6)";
+  };
+  const pressedLandColor = (land) => {
+    return props.pressedButton.land === land ? "green" : "rgb(154,205,50,0.6)";
+  };
+
   return (
     <div className={classes.filterContainer}>
       <Paper className={classes.root} elevation={3}>
@@ -68,6 +84,9 @@ const Filters = (props) => {
                 key={year}
                 onClick={() => props.handleYearClick(year)}
                 variant="contained"
+                style={{
+                  backgroundColor: pressedYearColor(year),
+                }}
               >
                 {year}
               </Button>
@@ -82,6 +101,9 @@ const Filters = (props) => {
                 key={index}
                 variant="contained"
                 onClick={() => props.handleLaunchClick(boolean)}
+                style={{
+                  backgroundColor: pressedLaunchColor(boolean),
+                }}
               >
                 {boolean}
               </Button>
@@ -96,6 +118,9 @@ const Filters = (props) => {
                 key={index}
                 variant="contained"
                 onClick={() => props.handleLandClick(boolean)}
+                style={{
+                  backgroundColor: pressedLandColor(boolean),
+                }}
               >
                 {boolean}
               </Button>

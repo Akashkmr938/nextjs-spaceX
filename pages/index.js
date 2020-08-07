@@ -15,6 +15,7 @@ const Index = (props) => {
         handleLaunchClick={(boolean) => handleLaunchClick(boolean, props)}
         handleLandClick={(boolean) => handleLandClick(boolean, props)}
       />
+      <h2 style={{ textAlign: "center" }}>Developed By : Akash Kumar</h2>
     </>
   );
 };

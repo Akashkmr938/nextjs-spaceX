@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../card/card";
 import Grid from "@material-ui/core/Grid";
 import Filters from "../filters/filters";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, useMediaQuery } from "@material-ui/core";
 import { useRouter } from "next/router";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   gridContainer: {
     flexGrow: "1",
   },
@@ -13,21 +13,57 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   mainContainer: {
-    display: "flex",
+    display: (matches) => (matches ? "flex" : "block"),
   },
   filterContainer: {
     minWidth: "30%",
   },
-}));
+  card: {
+    backgroundColor: "white",
+  },
+});
 
 const HomePage = (props) => {
-  const classes = useStyles();
+  const matches = useMediaQuery("(min-width:850px)");
+  const classes = useStyles(matches);
   const router = useRouter();
+  const [pressedButton, setPressedButton] = useState({
+    year: null,
+    launch: null,
+    land: null,
+  });
+
+  useEffect(() => {
+    if (router.query.year) {
+      setPressedButton({
+        year: router.query.year,
+        launch: null,
+        land: null,
+      });
+    } else if (router.query.launch) {
+      setPressedButton({
+        year: null,
+        launch: router.query.launch,
+        land: null,
+      });
+    } else if (router.query.land) {
+      setPressedButton({
+        year: null,
+        launch: null,
+        land: router.query.land,
+      });
+    }
+  }, []);
 
   const handleYearClick = (year) => {
     props.handleYearClick(year);
     router.push(`/?year=${year}`, undefined, {
       shallow: true,
+    });
+    setPressedButton({
+      year: year,
+      launch: null,
+      land: null,
     });
   };
   const handleLaunchClick = (boolean) => {
@@ -35,11 +71,21 @@ const HomePage = (props) => {
     router.push(`/?launch=${boolean}`, undefined, {
       shallow: true,
     });
+    setPressedButton({
+      year: null,
+      launch: boolean,
+      land: null,
+    });
   };
   const handleLandClick = (boolean) => {
     props.handleLandClick(boolean);
     router.push(`/?land=${boolean}`, undefined, {
       shallow: true,
+    });
+    setPressedButton({
+      year: null,
+      launch: null,
+      land: boolean,
     });
   };
   return (
@@ -49,6 +95,7 @@ const HomePage = (props) => {
           handleYearClick={handleYearClick}
           handleLaunchClick={handleLaunchClick}
           handleLandClick={handleLandClick}
+          pressedButton={pressedButton}
         />
       </div>
       <div className={classes.gridContainer}>
@@ -60,7 +107,7 @@ const HomePage = (props) => {
               </Grid>
             ))
           ) : (
-            <h1>No results To Display</h1>
+            <h1 style={{ justifyContent: "center" }}>No results To Display</h1>
           )}
         </Grid>
       </div>
