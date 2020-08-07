@@ -2,10 +2,12 @@ import HomePage from "../components/homepage/homepage";
 import { wrapper } from "../store/store";
 import Axios from "axios";
 import { connect } from "react-redux";
+import { useMediaQuery } from "@material-ui/core";
 /**
  * This is the HomePage wrapper component.
  */
 const Index = (props) => {
+  const matches = useMediaQuery("(max-width:850px)");
   return (
     <>
       <h1 style={{ textAlign: "center" }}>SpaceX Launch Programs</h1>
@@ -14,6 +16,7 @@ const Index = (props) => {
         handleYearClick={(year) => handleYearClick(year, props)}
         handleLaunchClick={(boolean) => handleLaunchClick(boolean, props)}
         handleLandClick={(boolean) => handleLandClick(boolean, props)}
+        matches={matches}
       />
       <h2 style={{ textAlign: "center" }}>Developed By : Akash Kumar</h2>
     </>
@@ -31,7 +34,7 @@ export const getServerSideProps = wrapper.getServerSideProps((context) => {
   } else if (context.query.land) {
     return handleLaunchClick(context.query.land, context.store);
   } else {
-    return Axios.get(`https://api.spaceXdata.com/v3/launches?limit=10`)
+    return Axios.get(`https://api.spaceXdata.com/v3/launches?limit=100`)
       .then((response) => {
         context.store.dispatch({
           type: "LAUNCHES_LIMIT_100",

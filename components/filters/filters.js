@@ -24,6 +24,8 @@ const booleanArray = ["true", "false"];
 
 const useStyles = makeStyles((theme) => ({
   filterContainer: {
+    position: "sticky",
+    top: 0,
     color: "darkslategrey",
     justifyContent: "center",
     display: "flex",
@@ -40,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     textAlign: "center",
+    color: "darkslategrey",
   },
   buttonContainer: {
     display: "inline-grid",

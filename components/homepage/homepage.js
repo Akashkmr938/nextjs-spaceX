@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "../card/card";
 import Grid from "@material-ui/core/Grid";
 import Filters from "../filters/filters";
-import { makeStyles, useMediaQuery } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
 
 const useStyles = makeStyles({
@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   mainContainer: {
-    display: (matches) => (matches ? "flex" : "block"),
+    display: (matches) => (matches ? "block" : "flex"),
   },
   filterContainer: {
     minWidth: "30%",
@@ -21,11 +21,14 @@ const useStyles = makeStyles({
   card: {
     backgroundColor: "white",
   },
+  heading: {
+    width: "100%",
+    textAlign: "center",
+  },
 });
 
 const HomePage = (props) => {
-  const matches = useMediaQuery("(min-width:850px)");
-  const classes = useStyles(matches);
+  const classes = useStyles(props.matches);
   const router = useRouter();
   const [pressedButton, setPressedButton] = useState({
     year: null,
@@ -107,7 +110,7 @@ const HomePage = (props) => {
               </Grid>
             ))
           ) : (
-            <h1 style={{ justifyContent: "center" }}>No results To Display</h1>
+            <h1 className={classes.heading}>No results To Display</h1>
           )}
         </Grid>
       </div>
