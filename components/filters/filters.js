@@ -20,7 +20,8 @@ const yearArray = [
   "2020",
 ];
 
-const booleanArray = ["True", "False"];
+const booleanArray = ["true", "false"];
+
 const useStyles = makeStyles((theme) => ({
   filterContainer: {
     display: "flex",
@@ -51,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Filters = () => {
+const Filters = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.filterContainer}>
@@ -62,7 +63,12 @@ const Filters = () => {
           <hr className={classes.line} />
           <div className={classes.buttonContainer}>
             {yearArray.map((year, index) => (
-              <Button className={classes.btn} key={year} variant="contained">
+              <Button
+                className={classes.btn}
+                key={year}
+                onClick={() => props.handleYearClick(year)}
+                variant="contained"
+              >
                 {year}
               </Button>
             ))}
@@ -71,7 +77,12 @@ const Filters = () => {
           <hr className={classes.line} />
           <div className={classes.buttonContainer}>
             {booleanArray.map((boolean, index) => (
-              <Button className={classes.btn} key={index} variant="contained">
+              <Button
+                className={classes.btn}
+                key={index}
+                variant="contained"
+                onClick={() => props.handleLaunchClick(boolean)}
+              >
                 {boolean}
               </Button>
             ))}
@@ -80,7 +91,12 @@ const Filters = () => {
           <hr className={classes.line} />
           <div className={classes.buttonContainer}>
             {booleanArray.map((boolean, index) => (
-              <Button className={classes.btn} key={index} variant="contained">
+              <Button
+                className={classes.btn}
+                key={index}
+                variant="contained"
+                onClick={() => props.handleLandClick(boolean)}
+              >
                 {boolean}
               </Button>
             ))}
