@@ -1,4 +1,4 @@
-import HomePage from "../components/home-page/homepage";
+import HomePage from "../components/homepage/homepage";
 import { wrapper } from "../store/store";
 import Axios from "axios";
 import { connect } from "react-redux";
@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 const Index = (props) => {
   return (
     <>
+      <h1 style={{ textAlign: "center" }}>SpaceX Launch Programs</h1>
       <HomePage {...props} />
     </>
   );
