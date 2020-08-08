@@ -18,12 +18,12 @@ The application is using following tech stack:
 
 > Jest
 
-> react-testing-library
+> React-testing-library
 
 > Server Side Rendering using Next.js
 
-Deployed application can be found at `https://nextjs-space-x.vercel.app`
+Deployed application can be found at [https://nextjs-space-x.vercel.app](https://nextjs-space-x.vercel.app)
 
-Github repo can be fond on `https://github.com/Akashkmr938/nextjs-spaceX`
+Github repo can be found at [https://github.com/Akashkmr938/nextjs-spaceX](https://github.com/Akashkmr938/nextjs-spaceX)
 
 Lighthouse_report: ![lighthouse](/lighthouse_report.PNG)
