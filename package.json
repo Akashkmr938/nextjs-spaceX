@@ -6,17 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "inspect": "NODE_OPTIONS='--inspect' next dev"
+    "inspect": "NODE_OPTIONS='--inspect' next dev",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "axios": "^0.19.2",
     "next": "9.4.4",
+    "next-pwa": "^3.1.1",
     "next-redux-wrapper": "^6.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@testing-library/jest-dom": "^5.11.2",
+    "@testing-library/react": "^10.4.8",
+    "babel-jest": "^26.2.2",
+    "jest": "^26.2.2"
   }
 }

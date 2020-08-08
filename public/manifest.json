@@ -1,0 +1,16 @@
+{
+    "name": "SpaceX",
+    "short_name": "SpaceX",
+    "lang": "en-US",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#dddddd",
+    "background_color": "#dddddd",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
