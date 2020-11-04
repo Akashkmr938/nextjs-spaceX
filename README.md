@@ -1,5 +1,6 @@
 ## Getting Started
 
+Live Demo: [SpaceX](https://nextjs-space-x.vercel.app)
 Do `npm run dev` and then Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 For production build, do `npm run build` and then `npm run start`.
